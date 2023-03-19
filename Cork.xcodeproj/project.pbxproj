@@ -108,6 +108,7 @@
 		63D83107299935E900FA802F /* Dismiss Sheet Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D83106299935E900FA802F /* Dismiss Sheet Button.swift */; };
 		63D8310A299982EA00FA802F /* Search Result Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D83109299982EA00FA802F /* Search Result Row.swift */; };
 		63D8C957287A1D0800483A52 /* Loading View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D8C956287A1D0800483A52 /* Loading View.swift */; };
+		63F2FB9029C74E4F0062CB54 /* Cork Introduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F2FB8F29C74E4F0062CB54 /* Cork Introduction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -212,6 +213,7 @@
 		63D83106299935E900FA802F /* Dismiss Sheet Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dismiss Sheet Button.swift"; sourceTree = "<group>"; };
 		63D83109299982EA00FA802F /* Search Result Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Search Result Row.swift"; sourceTree = "<group>"; };
 		63D8C956287A1D0800483A52 /* Loading View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Loading View.swift"; sourceTree = "<group>"; };
+		63F2FB8F29C74E4F0062CB54 /* Cork Introduction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cork Introduction.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -430,8 +432,8 @@
 		636E11CA29C742CE00F8A06F /* Sub-Views */ = {
 			isa = PBXGroup;
 			children = (
-				636E11CB29C742DC00F8A06F /* Homebrew Introduction.swift */,
-				636E11CD29C7445800F8A06F /* Homebrew Installation.swift */,
+				63F2FB8E29C74DA80062CB54 /* Cork */,
+				63F2FB8D29C74D9E0062CB54 /* Homebrew */,
 			);
 			path = "Sub-Views";
 			sourceTree = "<group>";
@@ -686,6 +688,23 @@
 			path = Reusables;
 			sourceTree = "<group>";
 		};
+		63F2FB8D29C74D9E0062CB54 /* Homebrew */ = {
+			isa = PBXGroup;
+			children = (
+				636E11CD29C7445800F8A06F /* Homebrew Installation.swift */,
+				636E11CB29C742DC00F8A06F /* Homebrew Introduction.swift */,
+			);
+			path = Homebrew;
+			sourceTree = "<group>";
+		};
+		63F2FB8E29C74DA80062CB54 /* Cork */ = {
+			isa = PBXGroup;
+			children = (
+				63F2FB8F29C74E4F0062CB54 /* Cork Introduction.swift */,
+			);
+			path = Cork;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -797,6 +816,7 @@
 				63CD0276288B22D9004AE2EC /* View - New Windows.swift in Sources */,
 				6342117C29AA55B700E2563B /* Convert Folder Size to Presentable Format.swift in Sources */,
 				632FD2972995A7E50029FC49 /* Nicer Text Editor.swift in Sources */,
+				63F2FB9029C74E4F0062CB54 /* Cork Introduction.swift in Sources */,
 				632FD2992995BF490029FC49 /* Load up Tapped Taps.swift in Sources */,
 				63D8C957287A1D0800483A52 /* Loading View.swift in Sources */,
 				6340657F2871AF68001A2178 /* App Constants.swift in Sources */,

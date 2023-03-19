@@ -9,26 +9,14 @@ import SwiftUI
 
 struct OnboardingView: View
 {
+    
+    @EnvironmentObject var appState: AppState
+    
     var body: some View
     {
         VStack(spacing: 10)
         {
-            Text("Welcome to Cork!")
-                .font(.title)
-            Text("Thank you for downloading Cork. Let's get you started.")
-            
-            VStack
-            {
-                Text("Cork lets you...")
-                    .font(.title2)
-                
-                Grid
-                {
-                    FeatureRow(iconName: "square.and.arrow.down", iconColor: .blue, headline: "Some text", subheadline: "A much longer explanation")
-                }
-            }
-
-            HStack
+            if !appState.isHomebrewInstalled
             {
                 HomebrewIntroduction()
             }

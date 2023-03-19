@@ -19,12 +19,12 @@ struct FeatureRow: View
     {
         GridRow(alignment: .top)
         {
-            HStack
+            HStack(spacing: 15)
             {
                 Image(systemName: iconName)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 20, height: 20)
+                    .frame(width: 30)
                     .foregroundColor(iconColor)
 
                 VStack(alignment: .leading)
@@ -35,6 +35,7 @@ struct FeatureRow: View
                     Text(subheadline)
                         .font(.subheadline)
                 }
+                .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
             }
         }
     }

@@ -11,6 +11,7 @@ struct ContentView: View
 {
     @AppStorage("sortPackagesBy") var sortPackagesBy: PackageSortingOptions = .none
     @AppStorage("allowBrewAnalytics") var allowBrewAnalytics: Bool = true
+    @AppStorage("hasFinishedOnboarding") var hasFinishedOnboarding: Bool = false
     
     @EnvironmentObject var appState: AppState
 
@@ -88,9 +89,14 @@ struct ContentView: View
         .onAppear
         {
             
-            if AppConstants.brewExecutablePath == URL(string: "/")! // This means brew is not installed
+            if !hasFinishedOnboarding
             {
                 appState.isShowingOnboarding = true
+            }
+            
+            if AppConstants.brewExecutablePath == URL(string: "/")! // This means brew is not installed
+            {
+                appState.isHomebrewInstalled = false
             }
             else // If Brew is installed, do the usual thing
             {

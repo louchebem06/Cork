@@ -9,6 +9,7 @@ import Foundation
 
 class AppState: ObservableObject {
     @Published var isShowingOnboarding: Bool = true
+    @Published var isHomebrewInstalled: Bool = false
     
     /// Stuff for controlling various sheets from the menu bar
     @Published var isShowingInstallationSheet: Bool = false
