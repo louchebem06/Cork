@@ -87,24 +87,32 @@ struct ContentView: View
         }
         .onAppear
         {
-            print("Brew executable path: \(AppConstants.brewExecutablePath.absoluteString)")
-            Task
+            
+            if AppConstants.brewExecutablePath == URL(string: "/")! // This means brew is not installed
             {
-                await loadUpTappedTaps(into: availableTaps)
-                async let analyticsQueryCommand = await shell(AppConstants.brewExecutablePath.absoluteString, ["analytics"])
+                appState.isShowingOnboarding = true
+            }
+            else // If Brew is installed, do the usual thing
+            {
+                print("Brew executable path: \(AppConstants.brewExecutablePath.absoluteString)")
+                Task
+                {
+                    await loadUpTappedTaps(into: availableTaps)
+                    async let analyticsQueryCommand = await shell(AppConstants.brewExecutablePath.absoluteString, ["analytics"])
 
-                brewData.installedFormulae = await loadUpFormulae(appState: appState, sortBy: sortPackagesBy)
-                brewData.installedCasks = await loadUpCasks(appState: appState, sortBy: sortPackagesBy)
-                
-                if await analyticsQueryCommand.standardOutput.contains("Analytics are enabled")
-                {
-                    allowBrewAnalytics = true
-                    print("Analytics are ENABLED")
-                }
-                else
-                {
-                    allowBrewAnalytics = false
-                    print("Analytics are DISABLED")
+                    brewData.installedFormulae = await loadUpFormulae(appState: appState, sortBy: sortPackagesBy)
+                    brewData.installedCasks = await loadUpCasks(appState: appState, sortBy: sortPackagesBy)
+                    
+                    if await analyticsQueryCommand.standardOutput.contains("Analytics are enabled")
+                    {
+                        allowBrewAnalytics = true
+                        print("Analytics are ENABLED")
+                    }
+                    else
+                    {
+                        allowBrewAnalytics = false
+                        print("Analytics are DISABLED")
+                    }
                 }
             }
         }
@@ -128,6 +136,9 @@ struct ContentView: View
                 brewData.installedFormulae = sortPackagesBySize(brewData.installedFormulae)
                 brewData.installedCasks = sortPackagesBySize(brewData.installedCasks)
             }
+        })
+        .sheet(isPresented: $appState.isShowingOnboarding, content: {
+            OnboardingView()
         })
         .sheet(isPresented: $appState.isShowingInstallationSheet)
         {

@@ -8,6 +8,8 @@
 import Foundation
 
 class AppState: ObservableObject {
+    @Published var isShowingOnboarding: Bool = true
+    
     /// Stuff for controlling various sheets from the menu bar
     @Published var isShowingInstallationSheet: Bool = false
     @Published var isShowingUninstallationSheet: Bool = false
