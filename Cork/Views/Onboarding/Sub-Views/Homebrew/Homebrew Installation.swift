@@ -26,10 +26,49 @@ struct HomebrewInstallation: View
             switch installationStage
             {
             case .explanation:
-                Text("Some explanations")
-                
-                VStack(alignment: .center)
+                VStack(alignment: .center, spacing: 15)
                 {
+                    Text("Before we get started, here's an outline of what we're gonna do")
+                        .font(.subheadline)
+                    VStack(alignment: .leading) {
+                        HStack(alignment: .top, spacing: 7)
+                        {
+                            Image(systemName: "1.circle.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 15)
+                            VStack(alignment: .leading, spacing: 5)
+                            {
+                                Text("In order to install Homebrew, you will need to put in your password into a dialog that will show up when you press the install button below.")
+                                Text("Don't worry, this is just to tell macOS you want to install something that's not a traditional app. Cork will not see the password.")
+                                    .font(.subheadline)
+                                    .foregroundColor(.secondary)
+                            }
+                        }
+                        HStack(alignment: .top, spacing: 7)
+                        {
+                            Image(systemName: "2.circle.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 15)
+                            VStack(alignment: .leading, spacing: 5)
+                            {
+                                Text("The installation process will start. It should only take a few minutes, and you will know exactly what it's doing.")
+                            }
+                        }
+                        HStack(alignment: .top, spacing: 7)
+                        {
+                            Image(systemName: "3.circle.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 15)
+                            VStack(alignment: .leading, spacing: 5)
+                            {
+                                Text("After Homebrew is installed, Cork will restart and you can start using it!")
+                            }
+                        }
+                    }
+
                     Button
                     {
                         installationStage = .installing
@@ -38,6 +77,8 @@ struct HomebrewInstallation: View
                     }
                     .keyboardShortcut(.defaultAction)
                 }
+                .frame(width: 350)
+                .fixedSize()
 
             case .installing:
                 Text("Some text")
@@ -57,5 +98,6 @@ struct HomebrewInstallation: View
                     }
             }
         }
+        .fixedSize()
     }
 }
