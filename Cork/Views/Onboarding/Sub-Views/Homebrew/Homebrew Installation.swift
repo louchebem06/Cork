@@ -20,16 +20,24 @@ struct HomebrewInstallation: View
     {
         VStack(spacing: 15)
         {
-            Text("Homebrew Installation")
-                .font(.title)
+            Image(systemName: "cup.and.saucer")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 50)
+                .foregroundColor(.blue)
+            
+            VStack(alignment: .center, spacing: 5) {
+                Text("Homebrew Installation")
+                    .font(.title)
+                Text("Here's what we're gonna do")
+                    .font(.subheadline)
+            }
 
             switch installationStage
             {
             case .explanation:
                 VStack(alignment: .center, spacing: 15)
                 {
-                    Text("Before we get started, here's an outline of what we're gonna do")
-                        .font(.subheadline)
                     VStack(alignment: .leading) {
                         HStack(alignment: .top, spacing: 7)
                         {
@@ -39,8 +47,8 @@ struct HomebrewInstallation: View
                                 .frame(width: 15)
                             VStack(alignment: .leading, spacing: 5)
                             {
-                                Text("In order to install Homebrew, you will need to put in your password into a dialog that will show up when you press the install button below.")
-                                Text("Don't worry, this is just to tell macOS you want to install something that's not a traditional app. Cork will not see the password.")
+                                Text("When you press the Install button, macOS will ask for your password to approve the installation.")
+                                Text("Don't worry, Cork doesn't see your password")
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
                             }

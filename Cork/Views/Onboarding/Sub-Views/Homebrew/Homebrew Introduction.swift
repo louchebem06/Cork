@@ -15,7 +15,7 @@ private enum CurrentHomebrewIntroductionPage
 struct HomebrewIntroduction: View
 {
     @Binding var homebrewIntroductionStage: HomebrewIntroductionStage
-    
+
     @State private var headlineSubheadlineSpacing: CGFloat = 5
 
     @State private var currentPage: CurrentHomebrewIntroductionPage = .whatIsHomebrew
@@ -24,6 +24,11 @@ struct HomebrewIntroduction: View
     {
         VStack(spacing: 15)
         {
+            Image(systemName: "cup.and.saucer")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 50)
+
             Text("Welcome to the world of Homebrew!")
                 .font(.title)
 
@@ -34,12 +39,22 @@ struct HomebrewIntroduction: View
                 case .whatIsHomebrew:
                     VStack(alignment: .leading, spacing: headlineSubheadlineSpacing)
                     {
-                        Text("What is Homebrew?")
-                            .font(.headline)
-                        Text("It's like the App Store. It's the one-stop-shop for all sorts of apps, even those that are not in the App Store.")
+                        HStack(alignment: .top, spacing: 15)
+                        {
+                            Image(systemName: "square.and.arrow.down.on.square")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 40)
+                            VStack(alignment: .leading, spacing: headlineSubheadlineSpacing)
+                            {
+                                Text("What is Homebrew?")
+                                    .font(.headline)
+                                Text("It's like the App Store. It's the one-stop-shop for all sorts of apps, even those that are not in the App Store.")
+                            }
+                        }
 
                         Spacer()
-                        
+
                         HStack
                         {
                             Spacer()
@@ -56,13 +71,24 @@ struct HomebrewIntroduction: View
                 case .whyUseHomebrew:
                     VStack(alignment: .leading, spacing: headlineSubheadlineSpacing)
                     {
-                        Text("Why should I use Homebrew?")
-                            .font(.headline)
-                        Text("Usually, when you want to install an app that is not in the App Store, you have to download it from the app's website.")
-                        Text("With Homebrew, you can just say what app you want to install, and Homebrew finds and installs it automatically for you.")
+                        HStack(alignment: .top, spacing: 15)
+                        {
+                            Image(systemName: "icloud.and.arrow.down")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 40)
+
+                            VStack(alignment: .leading, spacing: headlineSubheadlineSpacing)
+                            {
+                                Text("Why should I use Homebrew?")
+                                    .font(.headline)
+                                Text("When you want to install an app that is not in the App Store, you have to download it from the app's website.")
+                                Text("With Homebrew, you can just say what app you want to install, and Homebrew finds and installs it automatically for you.")
+                            }
+                        }
 
                         Spacer()
-                        
+
                         HStack
                         {
                             Button
@@ -86,31 +112,42 @@ struct HomebrewIntroduction: View
                 case .doesItHaveAllTheApps:
                     VStack(alignment: .leading, spacing: headlineSubheadlineSpacing)
                     {
-                        Text("Does Homebrew have all my apps?")
-                            .font(.headline)
-                        Text("Homebrew has a lot of apps, but not all of them.")
-                        Text("If there's an app that Homebrew cannot find, you can add more apps by adding Taps.")
-                        Text("Taps are sources of apps that Homebrew does not know about by default.")
+                        HStack(alignment: .top, spacing: 15)
+                        {
+                            Image(systemName: "square.stack.3d.down.forward")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 40)
+                            VStack(alignment: .leading, spacing: headlineSubheadlineSpacing)
+                            {
+                                Text("Does Homebrew have all my apps?")
+                                    .font(.headline)
+                                Text("Homebrew has a lot of apps, but not all of them.")
+                                Text("If there's an app that Homebrew cannot find, you can add more apps by adding Taps.")
+                                Text("Taps are sources of apps that Homebrew does not know about by default.")
+                            }
+                        }
 
                         Spacer()
-                        
+
                         HStack
                         {
-                            Button {
+                            Button
+                            {
                                 currentPage = .whyUseHomebrew
                             } label: {
                                 Text("Back")
                             }
-                            
+
                             Spacer()
-                            
-                            Button {
+
+                            Button
+                            {
                                 homebrewIntroductionStage = .installingHomebrew
                             } label: {
                                 Text("Sounds good. Install Homebrew!")
                             }
                             .buttonStyle(.borderedProminent)
-
                         }
                     }
                 }
