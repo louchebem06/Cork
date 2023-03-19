@@ -14,6 +14,8 @@ private enum CurrentHomebrewIntroductionPage
 
 struct HomebrewIntroduction: View
 {
+    @Binding var homebrewIntroductionStage: HomebrewIntroductionStage
+    
     @State private var headlineSubheadlineSpacing: CGFloat = 5
 
     @State private var currentPage: CurrentHomebrewIntroductionPage = .whatIsHomebrew
@@ -99,7 +101,16 @@ struct HomebrewIntroduction: View
                             } label: {
                                 Text("Back")
                             }
+                            
+                            Spacer()
+                            
+                            Button {
+                                homebrewIntroductionStage = .installingHomebrew
+                            } label: {
+                                Text("Sounds good. Install Homebrew!")
+                            }
                             .buttonStyle(.borderedProminent)
+
                         }
                     }
                 }

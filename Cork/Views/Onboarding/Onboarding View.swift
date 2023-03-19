@@ -7,10 +7,17 @@
 
 import SwiftUI
 
+enum HomebrewIntroductionStage
+{
+    case explainingHomebrew, installingHomebrew
+}
+
 struct OnboardingView: View
 {
     
     @EnvironmentObject var appState: AppState
+    
+    @State private var homebrewIntroductionStage: HomebrewIntroductionStage = .explainingHomebrew
     
     var body: some View
     {
@@ -18,7 +25,12 @@ struct OnboardingView: View
         {
             if !appState.isHomebrewInstalled
             {
-                HomebrewIntroduction()
+                switch homebrewIntroductionStage {
+                    case .explainingHomebrew:
+                        HomebrewIntroduction(homebrewIntroductionStage: $homebrewIntroductionStage)
+                    case .installingHomebrew:
+                        HomebrewInstallation()
+                }
             }
         }
         .padding()
