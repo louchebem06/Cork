@@ -7,14 +7,19 @@
 
 import SwiftUI
 
-private enum HomebrewInstallationStage
+enum HomebrewInstallationStage
 {
     case explanation, installing
 }
 
+enum HomebrewInstallationStep
+{
+    case ready, waitingForSudoPassword, downloadingXcodeTools, installingXcodeTools, downloadingBrew, installingBrew, performingPostInstallCommands, done
+}
+
 struct HomebrewInstallation: View
 {
-    @State private var installationStage: HomebrewInstallationStage = .explanation
+    @ObservedObject var homebrewInstallationTracker = HomebrewInstallationProgressTracker()
 
     var body: some View
     {
@@ -25,20 +30,25 @@ struct HomebrewInstallation: View
                 .scaledToFit()
                 .frame(width: 50)
                 .foregroundColor(.blue)
-            
-            VStack(alignment: .center, spacing: 5) {
+
+            VStack(alignment: .center, spacing: 5)
+            {
                 Text("Homebrew Installation")
                     .font(.title)
-                Text("Here's what we're gonna do")
-                    .font(.subheadline)
+                if homebrewInstallationTracker.installationStage == .explanation
+                {
+                    Text("Here's what we're gonna do")
+                        .font(.subheadline)
+                }
             }
 
-            switch installationStage
+            switch homebrewInstallationTracker.installationStage
             {
             case .explanation:
                 VStack(alignment: .center, spacing: 15)
                 {
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .leading)
+                    {
                         HStack(alignment: .top, spacing: 7)
                         {
                             Image(systemName: "1.circle.fill")
@@ -79,7 +89,7 @@ struct HomebrewInstallation: View
 
                     Button
                     {
-                        installationStage = .installing
+                        homebrewInstallationTracker.installationStage = .installing
                     } label: {
                         Text("Install Homebrew")
                     }
@@ -89,21 +99,42 @@ struct HomebrewInstallation: View
                 .fixedSize()
 
             case .installing:
-                Text("Some text")
-                    .task
+                ProgressView(value: homebrewInstallationTracker.installationProgressNumer, total: 10)
+                {
+                    switch homebrewInstallationTracker.installationStep
                     {
-                        for await output in shell("/usr/bin/sudo", ["su"])
-                        {
-                            switch output
+                    case .ready:
+                        Text("Ready...")
+                            .onAppear
                             {
-                            case let .standardOutput(outputLine):
-                                print("Output line: \(outputLine)")
-
-                            case let .standardError(errorLine):
-                                print("Error line: \(errorLine)")
+                                Task
+                                {
+                                    try await installHomebrew(installationProgressTracker: homebrewInstallationTracker)
+                                }
                             }
-                        }
+
+                    case .waitingForSudoPassword:
+                        Text("Waiting for admin password...")
+
+                    case .downloadingXcodeTools:
+                        Text("Downloading support tools...")
+
+                    case .installingXcodeTools:
+                        Text("Installing support tools...")
+
+                    case .downloadingBrew:
+                        Text("Downloading Homebrew...")
+
+                    case .installingBrew:
+                        Text("Installing Homebrew...")
+
+                    case .performingPostInstallCommands:
+                        Text("Performing post-install commands...")
+
+                    case .done:
+                        Text("Done!")
                     }
+                }
             }
         }
         .fixedSize()

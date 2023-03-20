@@ -50,6 +50,7 @@
 		6342117E29AA667500E2563B /* Int64 - Convert Sirectory Size to Presentable Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6342117D29AA667500E2563B /* Int64 - Convert Sirectory Size to Presentable Format.swift */; };
 		6342118029AA9CBB00E2563B /* Maintenance Pane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6342117F29AA9CBB00E2563B /* Maintenance Pane.swift */; };
 		6342118329AA9CF100E2563B /* Ready View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6342118229AA9CF100E2563B /* Ready View.swift */; };
+		6345D6BA29C79EFD001B7B8B /* Homebrew Installation Tracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6345D6B929C79EFD001B7B8B /* Homebrew Installation Tracker.swift */; };
 		635A50E929B7723C00164FBA /* Get Pin Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A50E829B7723C00164FBA /* Get Pin Status.swift */; };
 		635A50EB29B7740000164FBA /* Pin an Unpit Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A50EA29B7740000164FBA /* Pin an Unpit Package.swift */; };
 		636E11C929C7421600F8A06F /* Onboarding View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636E11C829C7421600F8A06F /* Onboarding View.swift */; };
@@ -61,6 +62,7 @@
 		6371EA232871EE5A00300E1B /* Brew Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6371EA222871EE5A00300E1B /* Brew Interface.swift */; };
 		6371EA2D287202F400300E1B /* Extract from JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6371EA2C287202F400300E1B /* Extract from JSON.swift */; };
 		637402DA299BF878001AB7B1 /* Sidebar View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637402D9299BF878001AB7B1 /* Sidebar View.swift */; };
+		637591C529C7BEDE0067A53F /* Install Homebrew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637591C429C7BEDE0067A53F /* Install Homebrew.swift */; };
 		637E00642872F3CE005C9890 /* Upgrade Packages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637E00632872F3CE005C9890 /* Upgrade Packages.swift */; };
 		637E00662872F629005C9890 /* Update Progress Tracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637E00652872F629005C9890 /* Update Progress Tracker.swift */; };
 		637E006828733C1C005C9890 /* Search for Package by ID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637E006728733C1C005C9890 /* Search for Package by ID.swift */; };
@@ -156,6 +158,7 @@
 		6342117D29AA667500E2563B /* Int64 - Convert Sirectory Size to Presentable Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int64 - Convert Sirectory Size to Presentable Format.swift"; sourceTree = "<group>"; };
 		6342117F29AA9CBB00E2563B /* Maintenance Pane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Maintenance Pane.swift"; sourceTree = "<group>"; };
 		6342118229AA9CF100E2563B /* Ready View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ready View.swift"; sourceTree = "<group>"; };
+		6345D6B929C79EFD001B7B8B /* Homebrew Installation Tracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Homebrew Installation Tracker.swift"; sourceTree = "<group>"; };
 		635A50E829B7723C00164FBA /* Get Pin Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Get Pin Status.swift"; sourceTree = "<group>"; };
 		635A50EA29B7740000164FBA /* Pin an Unpit Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pin an Unpit Package.swift"; sourceTree = "<group>"; };
 		636E11C829C7421600F8A06F /* Onboarding View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Onboarding View.swift"; sourceTree = "<group>"; };
@@ -167,6 +170,7 @@
 		6371EA222871EE5A00300E1B /* Brew Interface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Brew Interface.swift"; sourceTree = "<group>"; };
 		6371EA2C287202F400300E1B /* Extract from JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extract from JSON.swift"; sourceTree = "<group>"; };
 		637402D9299BF878001AB7B1 /* Sidebar View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sidebar View.swift"; sourceTree = "<group>"; };
+		637591C429C7BEDE0067A53F /* Install Homebrew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Install Homebrew.swift"; sourceTree = "<group>"; };
 		637E00632872F3CE005C9890 /* Upgrade Packages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Upgrade Packages.swift"; sourceTree = "<group>"; };
 		637E00652872F629005C9890 /* Update Progress Tracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Update Progress Tracker.swift"; sourceTree = "<group>"; };
 		637E006728733C1C005C9890 /* Search for Package by ID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Search for Package by ID.swift"; sourceTree = "<group>"; };
@@ -360,6 +364,7 @@
 		634065762871AB2A001A2178 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
+				637591C329C7BED20067A53F /* Homebrew Install */,
 				63006E0329ACC54900243E29 /* JSON */,
 				6382C8FC299D70E300354B19 /* Sorting */,
 				63D51F6F299ABA5100203F3F /* Maintenance */,
@@ -390,6 +395,7 @@
 				63D830FB29990DD600FA802F /* Terminal Output.swift */,
 				634065792871AC27001A2178 /* Brew Data Storage.swift */,
 				633289EE29A68B36004B2930 /* Search Result Tracker.swift */,
+				6345D6B929C79EFD001B7B8B /* Homebrew Installation Tracker.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -473,6 +479,14 @@
 				637402D9299BF878001AB7B1 /* Sidebar View.swift */,
 			);
 			path = Sidebar;
+			sourceTree = "<group>";
+		};
+		637591C329C7BED20067A53F /* Homebrew Install */ = {
+			isa = PBXGroup;
+			children = (
+				637591C429C7BEDE0067A53F /* Install Homebrew.swift */,
+			);
+			path = "Homebrew Install";
 			sourceTree = "<group>";
 		};
 		637E006928734032005C9890 /* Installation & Removal */ = {
@@ -848,9 +862,11 @@
 				63B8D4FA299E442300AA7CFA /* View - Conditional Modifiers.swift in Sources */,
 				6330531B2996A16600F34F94 /* GroupBox Headline Group.swift in Sources */,
 				6382C908299DA02700354B19 /* Uninstall Orphaned Packages.swift in Sources */,
+				637591C529C7BEDE0067A53F /* Install Homebrew.swift in Sources */,
 				632FD290299591C10029FC49 /* Get Folder Size.swift in Sources */,
 				63006E1729AD143D00243E29 /* Dependency List.swift in Sources */,
 				636E11CE29C7445800F8A06F /* Homebrew Installation.swift in Sources */,
+				6345D6BA29C79EFD001B7B8B /* Homebrew Installation Tracker.swift in Sources */,
 				6371EA1E2871D98100300E1B /* Package List Item.swift in Sources */,
 				635A50EB29B7740000164FBA /* Pin an Unpit Package.swift in Sources */,
 				63006E0F29ACCBA400243E29 /* Get Package Tap.swift in Sources */,
