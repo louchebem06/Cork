@@ -55,4 +55,6 @@ struct AppConstants {
     
     /// This one has all the downloaded files themselves
     static let brewCachedDownloadsPath: URL = brewCachePath.appendingPathComponent("downloads", conformingTo: .directory)
+    
+    static let tempDirectoryPath: URL = FileManager.default.temporaryDirectory
 }
