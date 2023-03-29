@@ -19,8 +19,6 @@ struct StartPage: View
     @EnvironmentObject var updateProgressTracker: UpdateProgressTracker
     @EnvironmentObject var outdatedPackageTracker: OutdatedPackageTracker
 
-    @State private var isLoadingUpgradeablePackages = true
-
     @State private var isShowingFastCacheDeletionMaintenanceView: Bool = false
 
     @State private var isDisclosureGroupExpanded: Bool = false
@@ -43,7 +41,7 @@ struct StartPage: View
                             .font(.title)
                             .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
 
-                        if isLoadingUpgradeablePackages
+                        if appState.isCheckingForPackageUpdates
                         {
                             GroupBox
                             {
@@ -213,7 +211,7 @@ struct StartPage: View
         {
             Task(priority: .background)
             {
-                isLoadingUpgradeablePackages = true
+                appState.isCheckingForPackageUpdates = true
                 
                 await shell(AppConstants.brewExecutablePath.absoluteString, ["update"])
                             
@@ -222,12 +220,12 @@ struct StartPage: View
                 if outdatedPackageTracker.outdatedPackageNames.isEmpty // Only play the slide out animation if there are no updates. Otherwise don't play it. This is because if there are updates, the "Updates available" GroupBox shows up and then immediately slides up, which is ugly.
                 {
                     withAnimation {
-                        isLoadingUpgradeablePackages = false
+                        appState.isCheckingForPackageUpdates = false
                     }
                 }
                 else
                 {
-                    isLoadingUpgradeablePackages = false
+                    appState.isCheckingForPackageUpdates = false
                 }
                 
             }

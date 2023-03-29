@@ -40,16 +40,24 @@ struct ContentView: View
             {
                 ToolbarItemGroup(placement: .primaryAction)
                 {
-                    Button
-                    {
-                        appState.isShowingUpdateSheet = true
-                    } label: {
-                        Label
-                        {
-                            Text("navigation.upgrade-packages")
-                        } icon: {
-                            Image(systemName: "arrow.clockwise")
+                    Menu {
+                        Button {
+                            print("Would only update")
+                        } label: {
+                            Label("Check for Updates", systemImage: "arrow.clockwise")
+                                .labelStyle(.titleAndIcon)
                         }
+                        
+                        Button {
+                            appState.isShowingUpdateSheet = true
+                        } label: {
+                            Label("navigation.upgrade-packages", systemImage: "square.and.arrow.down")
+                                .labelStyle(.titleAndIcon)
+                        }
+                    } label: {
+                        Label("navigation.upgrade-packages", systemImage: "square.and.arrow.down")
+                    } primaryAction: {
+                        appState.isShowingUpdateSheet = true
                     }
                     .help("navigation.upgrade-packages.help")
 
