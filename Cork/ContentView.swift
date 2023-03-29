@@ -56,12 +56,11 @@ struct ContentView: View
                         }
                     } label: {
                         Label("navigation.upgrade-packages", systemImage: "square.and.arrow.down")
+                            .labelStyle(.iconOnly)
                     } primaryAction: {
                         appState.isShowingUpdateSheet = true
                     }
                     .help("navigation.upgrade-packages.help")
-
-                    Spacer()
 
                     Button
                     {
