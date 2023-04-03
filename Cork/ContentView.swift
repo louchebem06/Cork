@@ -75,9 +75,28 @@ struct ContentView: View
                     }
                     .help("navigation.add-tap.help")
 
-                    Button
-                    {
-                        appState.isShowingInstallationSheet.toggle()
+                    Menu {
+                        Button {
+                            print("Would force-install a package")
+                        } label: {
+                            Label("Directly Install Package", systemImage: "plus.viewfinder")
+                                .labelStyle(.titleAndIcon)
+                        }
+
+                        
+                        Button {
+                            appState.isShowingInstallationSheet.toggle()
+                        } label: {
+                            Label
+                            {
+                                Text("navigation.install-package")
+                            } icon: {
+                                Image(systemName: "plus")
+                            }
+                            .labelStyle(.titleAndIcon)
+                        }
+                        .help("navigation.install-package.help")
+
                     } label: {
                         Label
                         {
@@ -85,6 +104,8 @@ struct ContentView: View
                         } icon: {
                             Image(systemName: "plus")
                         }
+                    } primaryAction: {
+                        appState.isShowingInstallationSheet.toggle()
                     }
                     .help("navigation.install-package.help")
                 }
