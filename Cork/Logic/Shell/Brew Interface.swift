@@ -29,12 +29,43 @@ enum OutdatedPackageRetrievalError: Error
 
 func getListOfUpgradeablePackages(brewData: BrewDataStorage) async throws -> [OutdatedPackage]
 {
+    
     var outdatedPackageTracker: [OutdatedPackage] = .init()
     
+    do
+    {
+        let outdatedPackages: [String] = try await getListOfAllUpgradeablePackageNames()
+        
+        for outdatedPackage in outdatedPackages {
+            if let foundOutdatedFormula = await brewData.installedFormulae.filter({ $0.name == outdatedPackage }).first
+            {
+                if foundOutdatedFormula.installedIntentionally /// Only show the intentionally-installed packages. The users don't care about dependencies
+                {
+                    outdatedPackageTracker.append(OutdatedPackage(package: foundOutdatedFormula))
+                }
+            }
+            if let foundOutdatedCask = await brewData.installedCasks.filter({ $0.name == outdatedPackage }).first
+            {
+                if foundOutdatedCask.installedIntentionally
+                {
+                    outdatedPackageTracker.append(OutdatedPackage(package: foundOutdatedCask))
+                }
+            }
+        }
+        
+        return outdatedPackageTracker
+    }
+    catch
+    {
+        throw OutdatedPackageRetrievalError.homeNotSet
+    }
+}
+func getListOfAllUpgradeablePackageNames() async throws -> [String]
+{
     let outdatedPackagesCommandOutput: TerminalOutput = await shell(AppConstants.brewExecutablePath.absoluteString, ["outdated"])
     let outdatedPackagesRaw: String = outdatedPackagesCommandOutput.standardOutput
     
-    print("Outdatedpackages output: \(outdatedPackagesCommandOutput)")
+    print("Outdated packages output: \(outdatedPackagesCommandOutput)")
     
     if outdatedPackagesCommandOutput.standardError.contains("HOME must be set")
     {
@@ -42,30 +73,13 @@ func getListOfUpgradeablePackages(brewData: BrewDataStorage) async throws -> [Ou
         throw OutdatedPackageRetrievalError.homeNotSet
     }
     
-    print("Outdated packages output: \(outdatedPackagesRaw)")
+    print("All outdated packages output: \(outdatedPackagesRaw)")
     
-    let outdatedPackages = outdatedPackagesRaw.components(separatedBy: "\n")
-    
-    for outdatedPackage in outdatedPackages {
-        if let foundOutdatedFormula = await brewData.installedFormulae.filter({ $0.name == outdatedPackage }).first
-        {
-            if foundOutdatedFormula.installedIntentionally /// Only show the intentionally-installed packages. The users don't care about dependencies
-            {
-                outdatedPackageTracker.append(OutdatedPackage(package: foundOutdatedFormula))
-            }
-        }
-        if let foundOutdatedCask = await brewData.installedCasks.filter({ $0.name == outdatedPackage }).first
-        {
-            if foundOutdatedCask.installedIntentionally
-            {
-                outdatedPackageTracker.append(OutdatedPackage(package: foundOutdatedCask))
-            }
-        }
-    }
+    let outdatedPackages: [String] = outdatedPackagesRaw.components(separatedBy: "\n")
     
     // Check if the last package has an empty name. If it does, remove it. Otherwise return the tracker
     // A fix for the last package being empty came out in Brew 4, but some people might not be upgraded to it, hence the need for this check
-    return outdatedPackageTracker.last?.package.name == "" ? outdatedPackageTracker.dropLast() : outdatedPackageTracker
+    return outdatedPackages.last == "" ? outdatedPackages.dropLast() : outdatedPackages
 }
 
 func addTap(name: String) async -> String

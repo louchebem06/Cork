@@ -6,5 +6,9 @@
 	<string>CorkHelp.help</string>
 	<key>CFBundleHelpBookName</key>
 	<string>Cork Help</string>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>GetOutdatedPackagesIntent</string>
+	</array>
 </dict>
 </plist>
