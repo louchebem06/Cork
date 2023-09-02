@@ -30,9 +30,9 @@ func getContentsOfFolder(targetFolder: URL, appState: AppState) async -> [BrewPa
                     print("Scanned version: \(version)")
 
                     print("Found desirable version: \(version). Appending to temporary package list")
-                    
+
                     temporaryURLStorage.append(targetFolder.appendingPathComponent(item, conformingTo: .folder).appendingPathComponent(version.lastPathComponent, conformingTo: .folder))
-                    
+
                     print("URL to package \(item) is \(temporaryURLStorage)")
 
                     temporaryVersionStorage.append(version.lastPathComponent)
@@ -57,7 +57,7 @@ func getContentsOfFolder(targetFolder: URL, appState: AppState) async -> [BrewPa
                         /// Find out whether the packages have been installed intentionally
                         let localPackageInfoJSONPath: URL = localPackagePath.appendingPathComponent("INSTALL_RECEIPT.json", conformingTo: .json)
                         async let localPackageInfoJSON: JSON = parseJSON(from: String(contentsOfFile: localPackageInfoJSONPath.path, encoding: .utf8))
-                        
+
                         var wasPackageInstalledIntentionally: Bool = false
                         if FileManager.default.fileExists(atPath: localPackageInfoJSONPath.path)
                         {
@@ -65,7 +65,7 @@ func getContentsOfFolder(targetFolder: URL, appState: AppState) async -> [BrewPa
                         }
 
                         print("Package \(item) \(wasPackageInstalledIntentionally ? "was installed intentionally" : "was not installed intentionally")")
-                        
+
                         contentsOfFolder.append(BrewPackage(name: item, isCask: false, installedOn: installedOn, versions: temporaryVersionStorage, installedIntentionally: wasPackageInstalledIntentionally, sizeInBytes: folderSizeRaw))
                     }
                     else

@@ -10,8 +10,8 @@ import Foundation
 struct OutdatedPackage: Identifiable, Hashable
 {
     let id: UUID = UUID()
-    
+
     let packageName: String
-    
+
     var isMarkedForUpdating: Bool = true
 }

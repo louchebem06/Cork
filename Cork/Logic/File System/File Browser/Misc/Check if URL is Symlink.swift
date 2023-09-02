@@ -9,13 +9,13 @@ import Foundation
 
 func isSymlink(at url: URL) -> Bool
 {
-    
+
     var isSymlink: Bool?
-    
+
     do
     {
         let fileAttributes = try url.resourceValues(forKeys: [.isSymbolicLinkKey])
-        
+
         isSymlink = fileAttributes.isSymbolicLink
         print(isSymlink as Any)
     }
@@ -23,6 +23,6 @@ func isSymlink(at url: URL) -> Bool
     {
         print(symlinkCheckingError.localizedDescription)
     }
-    
+
     return isSymlink!
 }

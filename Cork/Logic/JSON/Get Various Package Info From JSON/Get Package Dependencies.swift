@@ -11,7 +11,7 @@ import SwiftyJSON
 func getPackageDependenciesFromJSON(json: JSON, package: BrewPackage) -> [BrewPackageDependency]?
 {
     var packageDependencies: [BrewPackageDependency]? = nil
-    
+
     if !package.isCask
     {
         let installationInfos = json["formulae", 0, "installed"].arrayValue
@@ -20,7 +20,7 @@ func getPackageDependenciesFromJSON(json: JSON, package: BrewPackage) -> [BrewPa
             for dependency in installInfo["runtime_dependencies"].arrayValue
             {
                 print(BrewPackageDependency(name: dependency["full_name"].stringValue, version: dependency["version"].stringValue, directlyDeclared: dependency["declared_directly"].boolValue))
-                
+
                 /// This has to be here because you can't append to nil array
                 /// **How It Works**
                 /// If the array is nil, create it with the first element
@@ -33,7 +33,7 @@ func getPackageDependenciesFromJSON(json: JSON, package: BrewPackage) -> [BrewPa
                 {
                     packageDependencies?.append(BrewPackageDependency(name: dependency["full_name"].stringValue, version: dependency["version"].stringValue, directlyDeclared: dependency["declared_directly"].boolValue))
                 }
-                
+
             }
         }
     }
@@ -41,6 +41,6 @@ func getPackageDependenciesFromJSON(json: JSON, package: BrewPackage) -> [BrewPa
     {
         return nil
     }
-    
+
     return packageDependencies
 }

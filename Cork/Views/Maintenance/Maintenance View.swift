@@ -38,9 +38,9 @@ struct MaintenanceView: View
     @State var maintenanceFoundNoProblems: Bool = true
 
     @State var reclaimedSpaceAfterCachePurge: Int64 = 0
-    
+
     @State var forcedOptions: Bool? = false
-    
+
     var body: some View
     {
         VStack(alignment: .leading, spacing: 10)
@@ -124,11 +124,11 @@ struct MaintenanceView: View
                                 if shouldDeleteDownloads
                                 {
                                     print("Will delete downloads")
-                                    
+
                                     currentMaintenanceStepText = "maintenance.step.deleting-cached-downloads"
-                                    
+
                                     deleteCachedDownloads()
-                                    
+
                                     /// I have to assign the original value of the appState variable to a different variable, because when it updates at the end of the process, I don't want it to update in the result overview
                                     reclaimedSpaceAfterCachePurge = appState.cachedDownloadsFolderSize
                                 }
@@ -203,7 +203,7 @@ struct MaintenanceView: View
                                     }
                                 }
                             }
-                            
+
                             if shouldDeleteDownloads
                             {
                                 VStack(alignment: .leading) {
@@ -240,7 +240,7 @@ struct MaintenanceView: View
                             Button
                             {
                                 isShowingSheet.toggle()
-                                
+
                                 appState.cachedDownloadsFolderSize = directorySize(url: AppConstants.brewCachedDownloadsPath)
                             } label: {
                                 Text("action.close")

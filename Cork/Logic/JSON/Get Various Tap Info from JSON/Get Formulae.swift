@@ -11,12 +11,12 @@ import SwiftyJSON
 func getFormulaeAvailableFromTap(json: JSON, tap: BrewTap) -> [String]?
 {
     var availableFormulae: [String]? = nil
-    
+
     let availableFormulaeFromTap = json[0, "formula_names"].arrayValue
-    
+
     for availableFormula in availableFormulaeFromTap {
         let availableFormulaFinal = availableFormula.stringValue.replacingOccurrences(of: "\(tap.name)/", with: "")
-        
+
         if availableFormulae == nil
         {
             availableFormulae = [availableFormulaFinal]
@@ -26,8 +26,8 @@ func getFormulaeAvailableFromTap(json: JSON, tap: BrewTap) -> [String]?
             availableFormulae?.append(availableFormulaFinal)
         }
     }
-    
+
     print(availableFormulae as Any)
-    
+
     return availableFormulae
 }

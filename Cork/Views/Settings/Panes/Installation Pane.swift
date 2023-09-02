@@ -17,7 +17,7 @@ struct InstallationAndUninstallationPane: View
     @AppStorage("allowMoreCompleteUninstallations") var allowMoreCompleteUninstallations: Bool = false
 
     @State private var isShowingDeepUninstallConfirmation: Bool = false
-    
+
     var body: some View
     {
         SettingsPaneTemplate

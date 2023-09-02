@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct UpdateSomePackagesView: View {
-    
+
     @EnvironmentObject var outdatedPackageTracker: OutdatedPackageTracker
-    
+
     @Binding var isShowingSheet: Bool
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 10)
         {

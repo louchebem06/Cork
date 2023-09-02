@@ -28,7 +28,7 @@ struct CorkApp: App
 
     @AppStorage("areNotificationsEnabled") var areNotificationsEnabled: Bool = false
     @AppStorage("outdatedPackageNotificationType") var outdatedPackageNotificationType: OutdatedPackageNotificationType = .badge
-    
+
     @State private var sendStandardUpdatesAvailableNotification: Bool = true
 
     let backgroundUpdateTimer: NSBackgroundActivityScheduler = {
@@ -81,15 +81,15 @@ struct CorkApp: App
                                 var newOutdatedPackages = try await getListOfUpgradeablePackages(brewData: brewData)
 
                                 print("Outdated packages checker output: \(newOutdatedPackages)")
-                                
+
                                 defer
                                 {
                                     print("Will purge temporary update trackers")
-                                    
+
                                     updateResult = .init(standardOutput: "", standardError: "")
                                     newOutdatedPackages = .init()
                                 }
-                                
+
                                 if newOutdatedPackages.count == outdatedPackageTracker.outdatedPackages.count
                                 {
                                     print("No new updates found")
@@ -97,12 +97,12 @@ struct CorkApp: App
                                 else
                                 {
                                     print("New updates found")
-                                    
+
                                     /// Set this to `true` so the normal notification doesn't get sent
                                     sendStandardUpdatesAvailableNotification = false
-                                    
+
                                     outdatedPackageTracker.outdatedPackages = newOutdatedPackages
-                                    
+
                                     sendStandardUpdatesAvailableNotification = true
                                 }
                             }
@@ -131,7 +131,7 @@ struct CorkApp: App
                             if outdatedPackageNotificationType == .notification || outdatedPackageNotificationType == .both
                             {
                                 print("Will try to send notification")
-                                
+
                                 /// This needs to be checked because when the background update system finds an update, we don't want to send this normal notification.
                                 /// Instead, we want to send a more succinct notification that includes only the new package
                                 if sendStandardUpdatesAvailableNotification

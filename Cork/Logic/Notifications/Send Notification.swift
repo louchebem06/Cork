@@ -13,28 +13,28 @@ func sendNotification(title: String, body: String? = nil, subtitle: String? = ni
 {
     // Get whether we can send notifications
     let notificationsAreEnabled = UserDefaults.standard.bool(forKey: "areNotificationsEnabled")
-    
+
     if notificationsAreEnabled
     {
         let notification = UNMutableNotificationContent()
-        
+
         notification.title = title
-        
+
         if let body
         {
             notification.body = body
         }
-        
+
         if let subtitle
         {
             notification.subtitle = subtitle
         }
-        
+
         notification.sound = .default
         notification.interruptionLevel = .timeSensitive
-        
+
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: notification, trigger: nil)
-        
+
         AppConstants.notificationCenter.add(request)
     }
     else

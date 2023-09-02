@@ -21,7 +21,7 @@ func deleteCachedDownloads() -> Void
             print("Ignoring \(url)")
         }
     }
-    
+
     /// This folder has the symlinks, so we have to **delete ONLY THE SYMLINKS**
     for url in getContentsOfFolder(targetFolder: AppConstants.brewCachedCasksDownloadsPath)
     {

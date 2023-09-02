@@ -10,10 +10,10 @@ import Foundation
 struct PackageInProgressOfBeingInstalled: Identifiable
 {
     let id = UUID()
-    
+
     let package: BrewPackage
     var installationStage: PackageInstallationStage
     var packageInstallationProgress: Double
-    
+
     var realTimeTerminalOutput: String?
 }

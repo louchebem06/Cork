@@ -29,7 +29,7 @@ struct PackageListItem: View
 
                     SanitizedPackageName(packageName: packageItem.name, shouldShowVersion: false)
                 }
-                
+
                 Text(returnFormattedVersions(packageItem.versions))
                     .font(.subheadline)
                     .foregroundColor(.secondary)

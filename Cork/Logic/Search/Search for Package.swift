@@ -25,8 +25,8 @@ func searchForPackage(packageName: String, packageType: PackageType) async throw
     }
 
     finalPackageArray.removeLast()
-    
+
     print("Search found these: \(finalPackageArray)")
-    
+
     return finalPackageArray
 }

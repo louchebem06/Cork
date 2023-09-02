@@ -11,9 +11,9 @@ import Foundation
 func loadUpCasks(appState: AppState, sortBy: PackageSortingOptions) async -> [BrewPackage]
 {
     print("Started Cask task at \(Date())")
-    
+
     appState.isLoadingCasks = true
-    
+
     let contentsOfCaskFolder = await getContentsOfFolder(targetFolder: AppConstants.brewCaskPath, appState: appState)
 
     var installedCasks = [BrewPackage]() // Empty the tracker in case there is already something in it
@@ -24,7 +24,7 @@ func loadUpCasks(appState: AppState, sortBy: PackageSortingOptions) async -> [Br
     }
 
     appState.isLoadingCasks = false
-    
+
     switch sortBy {
     case .none:
         break
@@ -35,6 +35,6 @@ func loadUpCasks(appState: AppState, sortBy: PackageSortingOptions) async -> [Br
     case .bySize:
         installedCasks = sortPackagesBySize(installedCasks)
     }
-    
+
     return installedCasks
 }

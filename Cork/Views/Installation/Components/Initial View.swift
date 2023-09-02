@@ -10,16 +10,16 @@ import SwiftUI
 struct InstallationInitialView: View
 {
     @Environment(\.dismiss) var dismiss
-    
+
     @AppStorage("enableDiscoverability") var enableDiscoverability: Bool = false
     @AppStorage("discoverabilityDaySpan") var discoverabilityDaySpan: DiscoverabilityDaySpans = .month
 
     @EnvironmentObject var appState: AppState
-    
+
     @EnvironmentObject var brewData: BrewDataStorage
 
     @EnvironmentObject var topPackagesTracker: TopPackagesTracker
-    
+
     @ObservedObject var searchResultTracker: SearchResultTracker
 
     @State private var installedFormulaNamesSet: Set<String> = .init()
@@ -34,7 +34,7 @@ struct InstallationInitialView: View
     @Binding var foundPackageSelection: Set<UUID>
 
     @ObservedObject var installationProgressTracker: InstallationProgressTracker
-    
+
     @Binding var packageInstallationProcessStep: PackageInstallationProcessSteps
 
     @FocusState var isSearchFieldFocused: Bool
@@ -123,9 +123,9 @@ struct InstallationInitialView: View
                     Button
                     {
                         print("Would install package \(foundPackageSelection)")
-                        
+
                         let topCasksSet = Set(topPackagesTracker.topCasks)
-                        
+
                         var selectedTopPackageIsCask: Bool
                         {
                             // If this UUID is in the top casks tracker, it means it's a cask. Otherwise, it's a formula. So we test if the result of looking for the selected package in the cask tracker returns nothing; if it does return nothing, it's a formula (since the package is not in the cask tracker)
@@ -138,30 +138,30 @@ struct InstallationInitialView: View
                                 return true
                             }
                         }
-                        
+
                         do
                         {
                             let packageToInstall: BrewPackage = try getTopPackageFromUUID(requestedPackageUUID: foundPackageSelection.first!, isCask: selectedTopPackageIsCask, topPackageTracker: topPackagesTracker)
-                            
+
                             installationProgressTracker.packagesBeingInstalled.append(PackageInProgressOfBeingInstalled(package: packageToInstall, installationStage: .ready, packageInstallationProgress: 0))
-                            
+
                             print("Packages to install: \(installationProgressTracker.packagesBeingInstalled)")
-                            
+
                             installationProgressTracker.packageBeingCurrentlyInstalled = packageToInstall.name
-                            
+
                             packageInstallationProcessStep = .installing
                         }
                         catch let topPackageInstallationError
                         {
                             print("Failet while trying to get top package to install: \(topPackageInstallationError)")
-                            
+
                             dismiss()
-                            
+
                             appState.fatalAlertType = .topPackageArrayFilterCouldNotRetrieveAnyPackages
                             appState.isShowingFatalError = true
-                            
+
                         }
-                        
+
                     } label: {
                         Text("add-package.install.action")
                     }

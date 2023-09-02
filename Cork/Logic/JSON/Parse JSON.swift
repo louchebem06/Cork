@@ -16,7 +16,7 @@ enum JSONError: Error
 func parseJSON(from string: String) throws -> JSON
 {
     let data: Data = string.data(using: .utf8, allowLossyConversion: false)!
-    
+
     do
     {
         return try JSON(data: data)

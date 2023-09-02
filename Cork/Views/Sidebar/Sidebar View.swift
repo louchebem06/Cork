@@ -10,9 +10,9 @@ import SwiftUI
 struct SidebarView: View
 {
     @AppStorage("allowMoreCompleteUninstallations") var allowMoreCompleteUninstallations: Bool = false
-    
+
     @EnvironmentObject var appState: AppState
-    
+
     @State private var isShowingSearchField: Bool = false
     @State private var searchText: String = ""
     @State private var availableTokens: [PackageSearchToken] = [
@@ -22,7 +22,7 @@ struct SidebarView: View
         PackageSearchToken(name: "search.token.filter-manually-installed-packages", icon: "hand.tap", tokenSearchResultType: .intentionallyInstalledPackage)
     ]
     @State private var currentTokens: [PackageSearchToken] = .init()
-    
+
     var suggestedTokens: [PackageSearchToken]
     {
         if searchText.starts(with: "#")
@@ -34,7 +34,7 @@ struct SidebarView: View
             return .init()
         }
     }
-    
+
     var body: some View
     {
         List
@@ -43,12 +43,12 @@ struct SidebarView: View
             {
                 FormulaeSection(currentTokens: $currentTokens, searchText: $searchText)
             }
-            
+
             if currentTokens.isEmpty || currentTokens.contains(where: { $0.tokenSearchResultType == .cask }) || currentTokens.contains(where: { $0.tokenSearchResultType == .intentionallyInstalledPackage })
             {
                 CasksSection(searchText: $searchText)
             }
-            
+
             if currentTokens.isEmpty || currentTokens.contains(where: { $0.tokenSearchResultType == .tap })
             {
                 TapsSection(searchText: $searchText)
@@ -64,7 +64,7 @@ struct SidebarView: View
                 Image(systemName: token.icon)
                     .foregroundColor(Color.blue)
             }
-            
+
         }
         .toolbar(id: "SidebarToolbar")
         {

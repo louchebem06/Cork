@@ -15,7 +15,7 @@ class SelectedTapInfo: ObservableObject
 struct TapDetailView: View
 {
     @State var tap: BrewTap
-    
+
     @EnvironmentObject var appState: AppState
     @EnvironmentObject var availableTaps: AvailableTaps
 
@@ -75,7 +75,7 @@ struct TapDetailView: View
                         {
                             GridRow(alignment: .firstTextBaseline) {
                                 Text("tap-details.contents")
-                                
+
                                 if includedFormulae == nil && includedCasks == nil
                                 {
                                     Text("tap-details.contents.none")
@@ -97,17 +97,17 @@ struct TapDetailView: View
                                     Text("tap-details.contents.casks-mostly")
                                 }
                             }
-                            
+
                             Divider()
-                            
+
                             GridRow(alignment: .firstTextBaseline) {
                                 Text("tap-details.package-count")
                                 Text(numberOfPackages.formatted())
                                     .frame(maxWidth: .infinity, alignment: .leading)
                             }
-                            
+
                             Divider()
-                            
+
                             GridRow(alignment: .firstTextBaseline)
                             {
                                 Text("tap-details.homepage")
@@ -140,7 +140,7 @@ struct TapDetailView: View
                                 {
                                     Divider()
                                 }
-                                
+
                                 if let includedCasks
                                 {
                                     DisclosureGroup("tap-details.included-casks", isExpanded: $isShowingIncludedCasks)
@@ -156,13 +156,13 @@ struct TapDetailView: View
                     }
 
                     Spacer()
-                    
+
                     HStack
                     {
                         Spacer()
-                        
+
                         UninstallationProgressWheel()
-                        
+
                         Button {
                             Task(priority: .userInitiated)
                             {
@@ -192,7 +192,7 @@ struct TapDetailView: View
                 includedCasks = getCasksAvailableFromTap(json: parsedJSON, tap: tap)
 
                 numberOfPackages = Int(includedFormulae?.count ?? 0) + Int(includedCasks?.count ?? 0)
-                
+
                 isLoadingTapInfo = false
             }
         }

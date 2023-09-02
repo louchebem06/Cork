@@ -11,9 +11,9 @@ import SwiftUI
 enum TopPackageSorting: Int, Hashable, Identifiable, CaseIterable
 {
     var id: Self { self }
-    
+
     case mostDownloads, fewestDownloads, random
-    
+
     var key: LocalizedStringKey
     {
         switch self {

@@ -9,5 +9,5 @@ import Foundation
 
 func saveDataToDisk(data: Data, to destinationPath: URL) throws -> Void
 {
-    
+
 }

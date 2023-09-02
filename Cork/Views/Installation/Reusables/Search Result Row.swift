@@ -10,12 +10,12 @@ import SwiftUI
 struct SearchResultRow: View
 {
     @AppStorage("showDescriptionsInSearchResults") var showDescriptionsInSearchResults: Bool = false
-    
+
     @EnvironmentObject var brewData: BrewDataStorage
 
     @State var packageName: String
     @State var isCask: Bool
-    
+
     @State private var description: String = ""
 
     var body: some View
@@ -25,7 +25,7 @@ struct SearchResultRow: View
             HStack(alignment: .firstTextBaseline)
             {
                 Text(packageName)
-                
+
                 if !isCask
                 {
                     if brewData.installedFormulae.contains(where: { $0.name == packageName })
@@ -41,7 +41,7 @@ struct SearchResultRow: View
                     }
                 }
             }
-            
+
             if showDescriptionsInSearchResults
             {
                 if !description.isEmpty
@@ -56,7 +56,7 @@ struct SearchResultRow: View
                         .foregroundColor(.secondary)
                 }
             }
-            
+
         }
         .onAppear
         {
@@ -65,16 +65,16 @@ struct SearchResultRow: View
                 Task
                 {
                     print("\(packageName) came into view")
-                    
+
                     if description.isEmpty
                     {
-                        
+
                         print("\(packageName) does not have its description loaded")
-                        
+
                         async let descriptionRaw = await shell(AppConstants.brewExecutablePath.absoluteString, ["info", "--json=v2", packageName]).standardOutput
-                        
+
                         let descriptionJSON = try await parseJSON(from: descriptionRaw)
-                        
+
                         description = getPackageDescriptionFromJSON(json: descriptionJSON, package: BrewPackage(name: packageName, isCask: isCask, installedOn: Date(), versions: [], sizeInBytes: nil))
                     }
                     else

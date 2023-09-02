@@ -47,9 +47,9 @@ func shell(
     environment: [String: String]? = nil
 ) -> AsyncStream<StreamedTerminalOutput> {
     let task = Process()
-    
+
     var finalEnvironment: [String: String] = .init()
-    
+
     // MARK: - Set up the $HOME environment variable so brew commands work on versions 4.1 and up
     if var environment
     {
@@ -60,24 +60,24 @@ func shell(
     {
         finalEnvironment = ["HOME": FileManager.default.homeDirectoryForCurrentUser.path]
     }
-    
+
     // MARK: - Set up proxy if it's enabled
     if let proxySettings = AppConstants.proxySettings
     {
         print("Proxy is enabled")
         finalEnvironment["ALL_PROXY"] = "\(proxySettings.host):\(proxySettings.port)"
     }
-    
+
     task.environment = finalEnvironment
     task.launchPath = launchPath
     task.arguments = arguments
 
     let pipe = Pipe()
     task.standardOutput = pipe
-    
+
     let errorPipe = Pipe()
     task.standardError = errorPipe
-    
+
     do
     {
         try task.run()

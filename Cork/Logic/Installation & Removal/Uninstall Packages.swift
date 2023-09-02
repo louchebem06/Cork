@@ -15,7 +15,7 @@ func uninstallSelectedPackage(package: BrewPackage, brewData: BrewDataStorage, a
 
     print("Will try to remove package \(package.name)")
     var uninstallCommandOutput: TerminalOutput
-    
+
     if !shouldRemoveAllAssociatedFiles
     {
         uninstallCommandOutput = await shell(AppConstants.brewExecutablePath.absoluteString, ["uninstall", package.name])
@@ -78,7 +78,7 @@ func uninstallSelectedPackage(package: BrewPackage, brewData: BrewDataStorage, a
     }
 
     appState.isShowingUninstallationProgressView = false
-    
+
     if appState.navigationSelection != nil
     {
         appState.navigationSelection = nil

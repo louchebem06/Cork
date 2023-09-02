@@ -12,7 +12,7 @@ func pinAndUnpinPackage(package: BrewPackage, pinned: Bool) async -> Void
     if pinned
     {
         let pinResult = await shell(AppConstants.brewExecutablePath.absoluteString, ["pin", package.name])
-        
+
         if !pinResult.standardError.isEmpty
         {
             print("Error pinning: \(pinResult.standardError)")

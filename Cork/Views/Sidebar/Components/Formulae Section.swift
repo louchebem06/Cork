@@ -8,22 +8,22 @@
 import SwiftUI
 
 struct FormulaeSection: View {
-    
+
     @AppStorage("allowMoreCompleteUninstallations") var allowMoreCompleteUninstallations: Bool = false
-    
+
     @EnvironmentObject var appState: AppState
     @EnvironmentObject var brewData: BrewDataStorage
     @EnvironmentObject var selectedPackageInfo: SelectedPackageInfo
-    
+
     @Binding var currentTokens: [PackageSearchToken]
     @Binding var searchText: String
-    
+
     var body: some View {
         Section("sidebar.section.installed-formulae")
         {
             if !appState.isLoadingFormulae
             {
-                
+
                 if currentTokens.contains(where: { $0.tokenSearchResultType == .intentionallyInstalledPackage })
                 {
                     ForEach(searchText.isEmpty ? brewData.installedFormulae.filter({ $0.installedIntentionally == true }) : brewData.installedFormulae.filter({ $0.installedIntentionally == true && $0.name.contains(searchText)}))
@@ -60,9 +60,9 @@ struct FormulaeSection: View {
                                     Text("sidebar.section.all.contextmenu.untag-\(formula.name)")
                                 }
                             }
-                            
+
                             Divider()
-                            
+
                             Button
                             {
                                 Task
@@ -84,7 +84,7 @@ struct FormulaeSection: View {
                                     Text("sidebar.section.installed-formulae.contextmenu.uninstall-deep-\(formula.name)")
                                 }
                             }
-                            
+
                         }
                     }
                 }
@@ -124,9 +124,9 @@ struct FormulaeSection: View {
                                     Text("sidebar.section.all.contextmenu.untag-\(formula.name)")
                                 }
                             }
-                            
+
                             Divider()
-                            
+
                             Button
                             {
                                 Task
@@ -136,7 +136,7 @@ struct FormulaeSection: View {
                             } label: {
                                 Text("sidebar.section.installed-formulae.contextmenu.uninstall-\(formula.name)")
                             }
-                            
+
                             if allowMoreCompleteUninstallations
                             {
                                 Button

@@ -16,7 +16,7 @@ func untagPackage(package: BrewPackage, brewData: BrewDataStorage, appState: App
         {
             brewData.installedFormulae[indexToReplace].changeTaggedStatus()
         }
-        
+
     }
     else
     {
@@ -25,12 +25,12 @@ func untagPackage(package: BrewPackage, brewData: BrewDataStorage, appState: App
             brewData.installedCasks[indextoReplace].changeTaggedStatus()
         }
     }
-    
+
     if let indexOfPackageToRemove = appState.taggedPackageNames.firstIndex(of: package.name)
     {
         appState.taggedPackageNames.remove(at: indexOfPackageToRemove)
     }
-    
+
     print("Tagged packages: \(appState.taggedPackageNames) (\(appState.taggedPackageNames.count))")
-    
+
 }

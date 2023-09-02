@@ -69,7 +69,7 @@ struct AboutView: View
             profileURL: URL(string: "https://hachyderm.io/@oscb")!
         ),
     ]
-    
+
     @State private var translators: [AcknowledgedContributor] = [
         AcknowledgedContributor(
             name: "about.translator.1.name",
@@ -204,7 +204,7 @@ struct AboutView: View
                         Text("about.contributors")
                     }
                     .animation(.none, value: isContributorGroupExpanded)
-                    
+
                     DisclosureGroup
                     {
                         List

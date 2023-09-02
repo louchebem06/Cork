@@ -10,10 +10,10 @@ import SwiftUI
 
 struct BrewPane: View
 {
-    
+
     @AppStorage("allowBrewAnalytics") var allowBrewAnalytics: Bool = true
     @State private var isPerformingBrewAnalyticsChangeCommand: Bool = false
-    
+
     var body: some View
     {
         SettingsPaneTemplate {
@@ -35,10 +35,10 @@ struct BrewPane: View
                     Task
                     {
                         isPerformingBrewAnalyticsChangeCommand = true
-                        
+
                         print("Will ENABLE analytics")
                         await shell(AppConstants.brewExecutablePath.absoluteString, ["analytics", "on"])
-                        
+
                         isPerformingBrewAnalyticsChangeCommand = false
                     }
                 }
@@ -47,10 +47,10 @@ struct BrewPane: View
                     Task
                     {
                         isPerformingBrewAnalyticsChangeCommand = true
-                        
+
                         print("Will DISABLE analytics")
                         await shell(AppConstants.brewExecutablePath.absoluteString, ["analytics", "off"])
-                        
+
                         isPerformingBrewAnalyticsChangeCommand = false
                     }
                 }

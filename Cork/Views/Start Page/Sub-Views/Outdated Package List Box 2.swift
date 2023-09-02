@@ -28,9 +28,9 @@ struct OutdatedPackageListBox: View
                                 HStack(alignment: .firstTextBaseline) {
                                     Text(String.localizedPluralString("start-page.updates.count", outdatedPackageTracker.outdatedPackages.count))
                                         .font(.headline)
-                                    
+
                                     Spacer()
-                                    
+
                                     if outdatedPackageTracker.outdatedPackages.filter({ $0.isMarkedForUpdating }).count == outdatedPackageTracker.outdatedPackages.count
                                     {
                                         Button
@@ -48,9 +48,9 @@ struct OutdatedPackageListBox: View
                                         .disabled(outdatedPackageTracker.outdatedPackages.filter({ $0.isMarkedForUpdating }).count == 0)
 
                                     }
-                                    
+
                                 }
-                                
+
                                 DisclosureGroup
                                 {
                                     List

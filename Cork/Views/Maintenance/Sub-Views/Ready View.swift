@@ -8,25 +8,25 @@
 import SwiftUI
 
 struct MaintenanceReadyView: View {
-    
+
     @AppStorage("default_shouldUninstallOrphans") var default_shouldUninstallOrphans: Bool = true
     @AppStorage("default_shouldPurgeCache") var default_shouldPurgeCache: Bool = true
     @AppStorage("default_shouldDeleteDownloads") var default_shouldDeleteDownloads: Bool = true
     @AppStorage("default_shouldPerformHealthCheck") var default_shouldPerformHealthCheck: Bool = false
-    
+
     @Binding var shouldUninstallOrphans: Bool
     @Binding var shouldPurgeCache: Bool
     @Binding var shouldDeleteDownloads: Bool
     @Binding var shouldPerformHealthCheck: Bool
-    
+
     @Binding var isShowingSheet: Bool
-    
+
     @Binding var maintenanceSteps: MaintenanceSteps
-    
+
     @State var isShowingControlButtons: Bool
-    
+
     @State var forcedOptions: Bool
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 10)
         {
@@ -99,7 +99,7 @@ struct MaintenanceReadyView: View {
                 shouldDeleteDownloads = default_shouldDeleteDownloads
                 shouldPerformHealthCheck = default_shouldPerformHealthCheck
             }
-            
+
         }
     }
 

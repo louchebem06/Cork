@@ -11,7 +11,7 @@ import Foundation
 func loadUpFormulae(appState: AppState, sortBy: PackageSortingOptions) async -> [BrewPackage]
 {
     print("Started Cellar task at \(Date())")
-    
+
     appState.isLoadingFormulae = true
 
     let contentsOfCellarFolder = await getContentsOfFolder(targetFolder: AppConstants.brewCellarPath, appState: appState)
@@ -24,7 +24,7 @@ func loadUpFormulae(appState: AppState, sortBy: PackageSortingOptions) async -> 
     }
 
     appState.isLoadingFormulae = false
-    
+
     switch sortBy {
     case .none:
         break

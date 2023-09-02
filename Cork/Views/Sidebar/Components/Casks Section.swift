@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct CasksSection: View {
-    
+
     @AppStorage("allowMoreCompleteUninstallations") var allowMoreCompleteUninstallations: Bool = false
-    
+
     @EnvironmentObject var appState: AppState
     @EnvironmentObject var brewData: BrewDataStorage
     @EnvironmentObject var selectedPackageInfo: SelectedPackageInfo
-    
+
     @Binding var searchText: String
-    
+
     var body: some View {
         Section("sidebar.section.installed-casks")
         {
@@ -56,9 +56,9 @@ struct CasksSection: View {
                                 Text("sidebar.section.all.contextmenu.tag-\(cask.name)")
                             }
                         }
-                        
+
                         Divider()
-                        
+
                         Button
                         {
                             Task
@@ -68,7 +68,7 @@ struct CasksSection: View {
                         } label: {
                             Text("sidebar.section.installed-casks.contextmenu.uninstall-\(cask.name)")
                         }
-                        
+
                         if allowMoreCompleteUninstallations
                         {
                             Button

@@ -363,7 +363,7 @@ struct PackageDetailView: View
                         HStack(spacing: 15)
                         {
                             UninstallationProgressWheel()
-                            
+
                             if allowMoreCompleteUninstallations
                             {
                                 Spacer()
@@ -432,7 +432,7 @@ struct PackageDetailView: View
                 outdated = getIfPackageIsOutdated(json: parsedJSON, package: package)
                 caveats = getCaveatsFromJSON(json: parsedJSON, package: package)
                 pinned = getPinStatusFromJSON(json: parsedJSON, package: package)
-                
+
                 if let packageDependencies = getPackageDependenciesFromJSON(json: parsedJSON, package: package)
                 {
                     dependencies = packageDependencies

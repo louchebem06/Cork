@@ -13,9 +13,9 @@ import SwiftUI
 class AppDelegate: NSObject, NSApplicationDelegate
 {
     @AppStorage("showInMenuBar") var showInMenuBar = false
-    
+
     var appState = AppState()
-    
+
     func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool
     {
         if showInMenuBar
@@ -40,15 +40,15 @@ class AppDelegate: NSObject, NSApplicationDelegate
         }
         print("Died")
     }
-    
+
     func applicationDockMenu(_ sender: NSApplication) -> NSMenu? {
         let menu = NSMenu()
         menu.autoenablesItems = false
-        
+
         let updatePackagesMenuItem = NSMenuItem()
         updatePackagesMenuItem.action = #selector(appState.startUpdateProcessForLegacySelectors(_:))
         updatePackagesMenuItem.target = appState
-        
+
         if appState.isCheckingForPackageUpdates
         {
             updatePackagesMenuItem.title = String(localized: "start-page.updates.loading")
@@ -64,12 +64,12 @@ class AppDelegate: NSObject, NSApplicationDelegate
             updatePackagesMenuItem.title = String(localized: "navigation.menu.packages.update")
             updatePackagesMenuItem.isEnabled = true
         }
-        
+
         menu.addItem(updatePackagesMenuItem)
-        
+
         return menu
     }
-    
+
     private var aboutWindowController: NSWindowController?
 
     func showAboutPanel()

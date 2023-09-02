@@ -17,7 +17,7 @@ func updatePackages(_ updateProgressTracker: UpdateProgressTracker, appState _: 
         {
         case let .standardOutput(outputLine):
             print("Upgrade function output: \(outputLine)")
-                
+
             if let detailStage
             {
                 if outputLine.contains("Downloading")

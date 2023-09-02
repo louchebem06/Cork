@@ -6,6 +6,7 @@ disabled_rules:
   - identifier_name
   - shorthand_operator
   - function_body_length
+  - redundant_void_return
 
 force_try:
   severity: warning
@@ -20,3 +21,10 @@ custom_rules:
     include: "*.swift"
     regex: \S[ \t]*\{'
     severity: warning
+  
+  explicit_function_return:
+    name: "Explicit Return"
+    message: "Every function should specify a return type."
+    include: "*.swift"
+    regex: '(func [^\(]+\([*]*\)(?! ->))'
+    severity: error

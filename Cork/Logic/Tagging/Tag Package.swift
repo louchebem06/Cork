@@ -16,7 +16,7 @@ func tagPackage(package: BrewPackage, brewData: BrewDataStorage, appState: AppSt
         {
             brewData.installedFormulae[indexToReplace].changeTaggedStatus()
         }
-        
+
     }
     else
     {
@@ -25,10 +25,10 @@ func tagPackage(package: BrewPackage, brewData: BrewDataStorage, appState: AppSt
             brewData.installedCasks[indextoReplace].changeTaggedStatus()
         }
     }
-    
+
     appState.taggedPackageNames.insert(package.name)
-    
+
     print("Tagged package with ID \(package)")
-    
+
     print("Tagged packages: \(appState.taggedPackageNames)")
 }

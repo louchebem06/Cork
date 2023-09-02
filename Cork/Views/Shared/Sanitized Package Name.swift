@@ -21,7 +21,7 @@ struct SanitizedPackageName: View
             { /// Try to REGEX-match the name out of the raw name
                 HStack(alignment: .firstTextBaseline, spacing: 5) {
                     Text(sanitizedName)
-                    
+
                     if shouldShowVersion
                     {
                         /// The version is the lenght of the package name, + 1 due to the @ character

@@ -10,8 +10,8 @@ import Foundation
 struct OutdatedPackage: Identifiable, Hashable, Equatable
 {
     let id: UUID = UUID()
-    
+
     let package: BrewPackage
-    
+
     var isMarkedForUpdating: Bool = true
 }

@@ -86,7 +86,7 @@ struct UpdateSomePackagesView: View
                     {
                         packageUpdatingStage = .finished
                     }
-                    
+
                     outdatedPackageTracker.outdatedPackages = removeUpdatedPackages(outdatedPackageTracker: outdatedPackageTracker, namesOfUpdatedPackages: selectedPackages.map(\.package.name))
                 }
             case .finished:
@@ -102,7 +102,7 @@ struct UpdateSomePackagesView: View
                 }
                 .onAppear
                     {
-                        
+
                     }
 
             case .erroredOut:
@@ -147,14 +147,14 @@ struct UpdateSomePackagesView: View
         }
         .padding()
     }
-    
+
     func removeUpdatedPackages(outdatedPackageTracker: OutdatedPackageTracker, namesOfUpdatedPackages: [String]) -> [OutdatedPackage]
     {
         for updatedPackageName in namesOfUpdatedPackages
         {
             outdatedPackageTracker.outdatedPackages.removeAll(where: { $0.package.name == updatedPackageName })
         }
-        
+
         return outdatedPackageTracker.outdatedPackages
     }
 }

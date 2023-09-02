@@ -13,7 +13,7 @@ struct AppConstants
 {
     // MARK: - Notification stuff
     static let notificationCenter = UNUserNotificationCenter.current()
-    
+
     // MARK: - Proxy settings
     static let proxySettings: NetworkProxy? =
     {
@@ -108,7 +108,7 @@ struct AppConstants
 
     /// This one has all the downloaded files themselves
     static let brewCachedDownloadsPath: URL = brewCachePath.appendingPathComponent("downloads", conformingTo: .directory)
-    
+
     // MARK: - Misc Stuff
     static let backgroundUpdateInterval: TimeInterval = 10 * 60
     static let backgroundUpdateIntervalTolerance: TimeInterval = 1 * 60

@@ -12,12 +12,12 @@ struct NotificationsPane: View
 {
     @AppStorage("areNotificationsEnabled") var areNotificationsEnabled: Bool = false
     @AppStorage("outdatedPackageNotificationType") var outdatedPackageNotificationType: OutdatedPackageNotificationType = .badge
-    
+
     @AppStorage("notifyAboutPackageUpgradeResults") var notifyAboutPackageUpgradeResults: Bool = false
     @AppStorage("notifyAboutPackageInstallationResults") var notifyAboutPackageInstallationResults: Bool = false
-    
+
     @EnvironmentObject var appState: AppState
-    
+
     @State private var isShowingNotificationHelpPopup: Bool = false
 
     var body: some View
@@ -36,7 +36,7 @@ struct NotificationsPane: View
                     {
                         print("Will re-check notification authorization status")
                         await appState.requestNotificationAuthorization()
-                        
+
                         switch appState.notificationStatus?.authorizationStatus {
                             case .notDetermined:
                                 print("Not determined")
@@ -53,7 +53,7 @@ struct NotificationsPane: View
                             default:
                                 print("TF")
                         }
-                        
+
                         if appState.notificationStatus?.authorizationStatus == .denied
                         {
                             areNotificationsEnabled = false
@@ -73,37 +73,37 @@ struct NotificationsPane: View
                         }
                     })
                     .disabled(appState.notificationStatus?.authorizationStatus == .denied)
-                    
-                    if appState.notificationStatus?.authorizationStatus == .denied 
+
+                    if appState.notificationStatus?.authorizationStatus == .denied
                     {
                         Text("settings.notifications.notifications-disabled-in-settings.tooltip")
                             .font(.caption)
                             .foregroundColor(Color(nsColor: NSColor.systemGray))
                     }
                 }
-                
+
                 Divider()
-                
+
                 Form
                 {
                     Picker(selection: $outdatedPackageNotificationType) {
                         Text("settings.notifications.outdated-package-notification-type.badge")
                             .tag(OutdatedPackageNotificationType.badge)
-                        
+
                         Text("settings.notifications.outdated-package-notification-type.notification")
                             .tag(OutdatedPackageNotificationType.notification)
-                        
+
                         Text("settings.notifications.outdated-package-notification-type.both")
                             .tag(OutdatedPackageNotificationType.both)
-                        
+
                         Divider()
-                        
+
                         Text("settings.notifications.outdated-package-notification-type.none")
                             .tag(OutdatedPackageNotificationType.none)
                     } label: {
                         Text("settings.notifications.outdated-package-notification-type")
                     }
-                    
+
                     LabeledContent
                     {
                         VStack(alignment: .leading)
@@ -121,11 +121,11 @@ struct NotificationsPane: View
 
                 }
                 .disabled(!areNotificationsEnabled)
-                
+
                 HStack(alignment: .center)
                 {
                     Spacer()
-                    
+
                     HelpButton {
                         isShowingNotificationHelpPopup.toggle()
                     }

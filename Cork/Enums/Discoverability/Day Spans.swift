@@ -11,11 +11,11 @@ import SwiftUI
 enum DiscoverabilityDaySpans: Int, Hashable, Identifiable, CaseIterable
 {
     var id: Self { self }
-    
+
     case month = 30
     case quarterYear = 90
     case year = 365
-    
+
     var key: LocalizedStringKey
     {
         switch self {

@@ -9,25 +9,25 @@ import Foundation
 
 func getPackageFromUUID(requestedPackageUUID: UUID, tracker: SearchResultTracker) -> BrewPackage
 {
-    
+
     var filteredPackage: BrewPackage?
-    
+
     let foundFormulae: [BrewPackage] = tracker.foundFormulae
     let foundCasks: [BrewPackage] = tracker.foundCasks
-    
+
     for formula in foundFormulae {
         if requestedPackageUUID == formula.id
         {
             filteredPackage = BrewPackage(name: formula.name, isCask: formula.isCask, installedOn: formula.installedOn, versions: formula.versions, sizeInBytes: formula.sizeInBytes)
         }
     }
-    
+
     for cask in foundCasks {
         if requestedPackageUUID == cask.id {
             filteredPackage = BrewPackage(name: cask.name, isCask: cask.isCask, installedOn: cask.installedOn, versions: cask.versions, sizeInBytes: cask.sizeInBytes)
         }
     }
-    
+
     return filteredPackage!
 }
 
@@ -44,7 +44,7 @@ func getTopPackageFromUUID(requestedPackageUUID: UUID, isCask: Bool, topPackageT
         {
             throw TopPackageRetrievalError.resultingArrayWasEmptyEvenThoughPackagesWereInIt
         }
-        
+
         return BrewPackage(name: foundTopFormula.packageName, isCask: isCask, installedOn: nil, versions: [], sizeInBytes: nil)
     }
     else
@@ -53,7 +53,7 @@ func getTopPackageFromUUID(requestedPackageUUID: UUID, isCask: Bool, topPackageT
         {
             throw TopPackageRetrievalError.resultingArrayWasEmptyEvenThoughPackagesWereInIt
         }
-        
+
         return BrewPackage(name: foundTopCask.packageName, isCask: isCask, installedOn: nil, versions: [], sizeInBytes: nil)
     }
 }

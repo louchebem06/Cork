@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct CollapsibleSectionHeader: View {
-    
+
     var headerText: LocalizedStringKey
-    
+
     @Binding var isCollapsed: Bool
-    
+
     var body: some View {
         HStack(alignment: .center)
         {
             Text(headerText)
                 .animation(.none, value: isCollapsed)
-            
+
             Spacer()
-            
+
             Button
             {
                 withAnimation
