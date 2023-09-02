@@ -30,7 +30,7 @@ func loadUpTopPackages(numberOfDays: Int = 30, isCask: Bool, appState: AppState)
     {
         statsURL = URL(string: "https://formulae.brew.sh/api/analytics/cask-install/homebrew-cask/\(numberOfDays)d.json")!
     }
-    
+
     do
     {
         if let statsURL

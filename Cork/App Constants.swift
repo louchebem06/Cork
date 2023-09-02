@@ -26,7 +26,7 @@ struct AppConstants
             switch proxyRetrievalError
             {
             case .couldNotGetProxyStatus:
-                print("Could not get proxy status")                    
+                print("Could not get proxy status")
                 return nil
             case .couldNotGetProxyHost:
                 print("Could not get proxy host")

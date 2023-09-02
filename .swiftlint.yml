@@ -1,0 +1,22 @@
+disabled_rules:
+  - statement_position
+  - type_body_length
+  - line_length
+  - opening_brace
+  - identifier_name
+  - shorthand_operator
+  - function_body_length
+
+force_try:
+  severity: warning
+
+cyclomatic_complexity:
+  ignores_case_statements: true
+
+custom_rules:
+  opening_braces_newline:
+    name: "Opening Braces not on Next Line"
+    message: "Opening braces should be placed on the next line."
+    include: "*.swift"
+    regex: \S[ \t]*\{'
+    severity: warning

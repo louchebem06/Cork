@@ -1109,6 +1109,7 @@
 			buildConfigurationList = 634065702871AA42001A2178 /* Build configuration list for PBXNativeTarget "Cork" */;
 			buildPhases = (
 				6340655D2871AA42001A2178 /* Sources */,
+				6325561A2AA3BBC80032133D /* SwiftLint Check */,
 				6340655E2871AA42001A2178 /* Frameworks */,
 				6340655F2871AA42001A2178 /* Resources */,
 			);
@@ -1214,6 +1215,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		6325561A2AA3BBC80032133D /* SwiftLint Check */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftLint Check";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 		C4C2A10D2A9110A400E6F172 /* Re-index Help Book */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -1590,6 +1609,7 @@
 				DEVELOPMENT_TEAM = ZSVA6DVZHM;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Cork/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -1622,6 +1642,7 @@
 				DEVELOPMENT_TEAM = ZSVA6DVZHM;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Cork/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
