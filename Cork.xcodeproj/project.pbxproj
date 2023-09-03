@@ -282,6 +282,8 @@
 		63A8D2F229CA346400E892FB /* Load Tagged IDs from Disk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Load Tagged IDs from Disk.swift"; sourceTree = "<group>"; };
 		63A8D2F629CA605200E892FB /* Apply Tags to Package Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Apply Tags to Package Array.swift"; sourceTree = "<group>"; };
 		63A90D8A2AA268C700CEC48E /* Sanitized Package Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sanitized Package Name.swift"; sourceTree = "<group>"; };
+		63A96F682AA498270029E33B /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
+		63A96F692AA498280029E33B /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = cs; path = cs.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		63A9778429A7D5800091DF2E /* Synchnorize Installed Packages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Synchnorize Installed Packages.swift"; sourceTree = "<group>"; };
 		63AB6C482A9FEC2E00E58B93 /* Top Package List Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Top Package List Item.swift"; sourceTree = "<group>"; };
 		63AC992F29A7814700B38D7C /* String - Contains Element in Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String - Contains Element in Array.swift"; sourceTree = "<group>"; };
@@ -1191,6 +1193,7 @@
 				"zh-Hans",
 				"zh-Hant",
 				de,
+				cs,
 			);
 			mainGroup = 634065582871AA42001A2178;
 			packageReferences = (
@@ -1431,6 +1434,7 @@
 				C4F430F329C93B500070489B /* zh-Hans */,
 				B0376A5729D26097009C7E6B /* zh-Hant */,
 				512963C42A35A288009FE512 /* de */,
+				63A96F682AA498270029E33B /* cs */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1442,6 +1446,7 @@
 				C4F430F429C93B500070489B /* zh-Hans */,
 				B0376A5829D26097009C7E6B /* zh-Hant */,
 				512963C52A35A288009FE512 /* de */,
+				63A96F692AA498280029E33B /* cs */,
 			);
 			name = Localizable.stringsdict;
 			sourceTree = "<group>";
